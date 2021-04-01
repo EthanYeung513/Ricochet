@@ -40,18 +40,17 @@ public class NormEnemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     { 
-        if (other.CompareTag("Player")) //If it touched player
+        if (other.CompareTag("Player")) //If it collided withplayer
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Restart scene
         }
-        else if (other.CompareTag("Bullet")) //If it touched bullet
+        else if (other.CompareTag("Bullet")) //If it collided with bullet
         {
-            Debug.Log("HIT");
             currentBullet = other.gameObject; //Set currentBullet
             bulletBehaviour currentBulletScript = currentBullet.GetComponent<bulletBehaviour>(); //Get script of current Bullet
             currentBounces = currentBulletScript.bounceCount; //Get bounce count
-            calculateDamage(currentBounces); //Call function to calculate damage
-            Destroy(currentBullet);
+            calculateDamage(currentBounces); //Call function to calculate and deal damage
+            Destroy(currentBullet); //Destroy this bullet
            
         }
     }
