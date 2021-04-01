@@ -8,7 +8,8 @@ public class bulletBehaviour : MonoBehaviour
     [SerializeField] LayerMask richochetMask;
     [SerializeField] float bulletSpeed = 170f;
 
-    [SerializeField] int bounceCount;
+   // [SerializeField] public int bulletDamage = 50;
+    [SerializeField] public int bounceCount;
 
     Vector3 lastVel;
 
