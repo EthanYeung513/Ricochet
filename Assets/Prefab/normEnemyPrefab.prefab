@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3921855827943521156}
   - component: {fileID: 3983466128240783787}
   - component: {fileID: -3142449314411240333}
+  - component: {fileID: -1291139354369229383}
   m_Layer: 0
   m_Name: normEnemyPrefab
   m_TagString: Untagged
@@ -95,7 +96,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   distance: 100
+  health: 100
   player: {fileID: 0}
+  currentBullet: {fileID: 0}
+  currentBounces: 0
 --- !u!136 &3983466128240783787
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -132,3 +136,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &-1291139354369229383
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983466128240783784}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
