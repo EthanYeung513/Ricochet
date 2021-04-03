@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private GameObject BulletPrefab;
     [SerializeField] private GameObject wallPrefab;
+    [SerializeField] public GameObject currentWall;
     [SerializeField] private Transform pointOfShot;
     [SerializeField] private int selection = 1; // 1 = shoot, 2 = build mode. Default to 1
     private float speed;
@@ -26,6 +27,22 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (selection == 2) //Build mode
+        {
+            if (currentWall == null) //If no current wall
+            {
+                currentWall = Instantiate(wallPrefab); //Instantiate wall
+                    
+            }
+            if (currentWall != null) //If current wall is current on scrren
+            {
+                moveWallToMouse();
+
+            }
+        }
+
+
         if (Input.GetMouseButtonDown(0)) // If they click mouse click
         {
             if (selection == 1) // If shoot mode
@@ -35,19 +52,7 @@ public class PlayerShoot : MonoBehaviour
             }
             else if(selection == 2) // If build mode
             {
-                Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
-                Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-                float rayLength;
-                Vector3 pointToBuild;
-
-                if (groundPlane.Raycast(cameraRay, out rayLength))
-                {
-                    pointToBuild = cameraRay.GetPoint(rayLength);
-                    pointToBuild = new Vector3(pointToBuild.x, pointToBuild.y + 2, pointToBuild.z);
-                    Debug.DrawLine(cameraRay.origin, pointToBuild, Color.blue);
-                    createWall(pointToBuild);
-                    
-                }   
+                currentWall = null;
             }          
 
         }
@@ -57,6 +62,10 @@ public class PlayerShoot : MonoBehaviour
         {
             selection = 1; //  Change selection
             
+            if (currentWall != null)
+            {
+                Destroy(currentWall);
+            }
         }
         else if (Input.GetKeyDown("2")) // build mode
             {
@@ -76,6 +85,24 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    void moveWallToMouse()
+    {
+        Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+        Vector3 pointToBuild;
+
+        if (groundPlane.Raycast(cameraRay, out rayLength))
+        {
+            pointToBuild = cameraRay.GetPoint(rayLength);
+            pointToBuild = new Vector3(pointToBuild.x, pointToBuild.y + 2, pointToBuild.z);
+            currentWall.transform.position = pointToBuild;
+            Quaternion currentRotation = getRotation(); //Get rotation of object
+            currentWall.transform.rotation = currentRotation;
+           
+
+        }
+    }
     void changeRotation(String upOrDown) //Change rotation, take in either up or down
     {
         if (upOrDown == "up") //If up
@@ -105,7 +132,7 @@ public class PlayerShoot : MonoBehaviour
     }
 
 
-    void createWall(Vector3 pointToBuild) //Build wall
+     Quaternion getRotation() //Build wall
     {
         Vector3 rotationOfBuild = new Vector3(0, 0, 0);
         switch (buildRotation)
@@ -141,6 +168,6 @@ public class PlayerShoot : MonoBehaviour
 
 
         }
-        Instantiate(wallPrefab, pointToBuild, Quaternion.Euler(rotationOfBuild));
+        return Quaternion.Euler(rotationOfBuild);
     }
 }

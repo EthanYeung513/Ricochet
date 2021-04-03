@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.18561673, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2830937, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -520,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 3983466128240783764, guid: 35e41c8ea93c33b4d87d86cb6202c6f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.057604
+      value: 13.06
       objectReference: {fileID: 0}
     - target: {fileID: 3983466128240783764, guid: 35e41c8ea93c33b4d87d86cb6202c6f8,
         type: 3}
@@ -530,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 3983466128240783764, guid: 35e41c8ea93c33b4d87d86cb6202c6f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.69
+      value: 9.97
       objectReference: {fileID: 0}
     - target: {fileID: 3983466128240783764, guid: 35e41c8ea93c33b4d87d86cb6202c6f8,
         type: 3}
@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 508200568}
   - component: {fileID: 508200573}
   - component: {fileID: 508200567}
+  - component: {fileID: 508200574}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -662,7 +663,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -729,9 +730,23 @@ MonoBehaviour:
     type: 3}
   wallPrefab: {fileID: 2944959009727738381, guid: 07c1135be7da2f345a40261f04c6756a,
     type: 3}
+  currentWall: {fileID: 0}
   pointOfShot: {fileID: 991452908}
   selection: 1
   cam: {fileID: 963194227}
+--- !u!114 &508200574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508200566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da1106279762874c9ab4c387c90aaf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastBullet: {fileID: 0}
 --- !u!1 &613267046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991452907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.302, z: 0.746}
+  m_LocalPosition: {x: 0.05, y: 0.302, z: 0.658}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 508200572}
@@ -1509,7 +1524,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991452907}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

@@ -13,13 +13,15 @@ public class bulletBehaviour : MonoBehaviour
 
     Vector3 lastVel;
 
-   
+    public GameObject player;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        player = GameObject.Find("Player"); //Set player variable to instance of player
+        PlayerManager playerManagerScript = player.GetComponent<PlayerManager>();
+        playerManagerScript.lastBullet = gameObject;  // Start is called before the first frame update
 
 
         //  transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);

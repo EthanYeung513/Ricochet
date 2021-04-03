@@ -55,7 +55,7 @@ public class NormEnemy : MonoBehaviour
         }
         else if (other.CompareTag("Bullet")) //If it collided with bullet
         {
-            if (currentBullet == other.gameObject)
+            if (currentBullet == other.gameObject) //Make sure the same bullet doesn't damage 2 times
             {
                 return;
             }
@@ -72,7 +72,8 @@ public class NormEnemy : MonoBehaviour
 
     void calculateDamage(int currentBounces)
     {
-        int damageToDeal = 50;
+        int damageToDeal = 10 + (currentBounces * 50);
+        Debug.Log(currentBounces + "Bounces");
         Debug.Log(damageToDeal);
         bulletHit += 1;
         Debug.Log(bulletHit);

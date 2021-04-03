@@ -15,7 +15,7 @@ public class EnemyHealthBar : MonoBehaviour
     void Start()
     {
         thisSlider = gameObject.GetComponent<Slider>();
-
+        thisSlider.value = 1; //Set slider to max value
         player = GameObject.Find("Player"); //Set player variable to instance of player
         currentEnemy = gameObject.transform.parent.gameObject.transform.parent.gameObject; //Set the enemy as the parent 
         currentEnemyScript = currentEnemy.GetComponent<NormEnemy>(); //Get script of current Bullet
@@ -31,6 +31,6 @@ public class EnemyHealthBar : MonoBehaviour
     {
         currentHealth = currentEnemyScript.health; //Set health
         thisSlider.value = currentHealth / 100;
-        Debug.Log(thisSlider.value);
+        Debug.Log(thisSlider.value + "Slider value");
     }
 }
